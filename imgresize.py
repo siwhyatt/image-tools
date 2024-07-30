@@ -1,10 +1,10 @@
 import os
 from PIL import Image
+from helpers import GetArgument
+
 
 # Get the list of image files in the folder
-input_folder_path = "input/"
-output_folder_path = "output/"
-
+input_folder = GetArgument("Folder: ", 1)
 
 def GetSize():
     # Get the desired width of the resized images from user input
@@ -20,7 +20,7 @@ def GetSize():
     return new_width
 
 def Rename():
-    response = (input("Rename files with new sizes? Y/N "))
+    response = GetArgument("Rename files with new sizes? Y/N: ", 2)
 
     if response.lower() == "y":
         return True
@@ -28,14 +28,14 @@ def Rename():
         return False
 
     
-def ResizeImages(new_width, input_folder_path, output_folder_path, rename):
+def ResizeImages(new_width, folder_path, rename):
 
-    image_files = [f for f in os.listdir(input_folder_path) if f.endswith(".jpg")]
+    image_files = [f for f in os.listdir(folder_path) if f.lower().endswith(".jpg")]
 
     # Loop through each image file and resize it
     for file_name in image_files:
         # Open the image file
-        image = Image.open(os.path.join(input_folder_path, file_name))
+        image = Image.open(os.path.join(folder_path, file_name))
 
         # Get the current width and height
         width, height = image.size
@@ -51,16 +51,18 @@ def ResizeImages(new_width, input_folder_path, output_folder_path, rename):
             width_string = str(new_width)
             height_string = str(new_height)
             new_file_name = "resized_" + width_string + "_x_" + height_string + "_px_" + file_name
-            resized_image.save(os.path.join(output_folder_path, new_file_name))
+            resized_image.save(os.path.join(folder_path, new_file_name))
+            print(f"Resized & renamed image: {new_file_name}")
         else:
             # Save the image with same file name
-            resized_image.save(os.path.join(output_folder_path, file_name))
+            resized_image.save(os.path.join(folder_path, file_name))
+            print(f"Resized image: {resized_image}")
 
 
 def main():
     new_width = GetSize()
     rename = Rename()
-    ResizeImages(new_width, input_folder_path, output_folder_path, rename)
+    ResizeImages(new_width, input_folder, rename)
 
 
 if __name__ == "__main__":
