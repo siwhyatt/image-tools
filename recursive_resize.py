@@ -22,7 +22,7 @@ def rename_files_in_subfolders(input_folder_path, new_width):
 
 def main():
     new_width = GetSize()
-    folder = "input"
+    folder = "Folders"
     rename_files_in_subfolders(folder, new_width)
 
 

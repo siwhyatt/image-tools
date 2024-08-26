@@ -12,5 +12,5 @@ def rename_files_in_subfolders(root_dir):
             print(f"Renamed: {old_path} to {new_path}")
 
 # Replace 'path_to_your_directory' with the actual path to your parent directory
-parent_directory = 'input'
+parent_directory = 'Folders'
 rename_files_in_subfolders(parent_directory)
