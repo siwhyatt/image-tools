@@ -4,7 +4,7 @@ from helpers import GetArgument
 
 
 # Get the list of image files in the folder
-input_folder = GetArgument("Folder: ", 1)
+input_folder = os.getcwd()
 
 def GetSize():
     # Get the desired width of the resized images from user input
