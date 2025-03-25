@@ -7,8 +7,8 @@ from PIL import Image
 #And save it in a variable imgs_path
 #Path.cwd() returns the current working directory
 #where the program .py file is.
-input_path = Path.cwd()/Path('input')
-output_path = Path.cwd()/Path('output')
+input_path = Path.cwd()
+output_path = Path.cwd()
 
 #We use here the method glob to search for the .png files
 for x in input_path.glob('*.png'):

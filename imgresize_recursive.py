@@ -4,10 +4,7 @@ from PIL import Image
 def resize_image(folder_path, new_width):
     for foldername, subfolders, filenames in os.walk(folder_path):
         for filename in filenames:
-            if filename.endswith(".jpg"):
-                # Construct the relative path for the output folder
-                relative_path = os.path.relpath(foldername, folder_path)
-                output_folder = os.path.join(folder_path, relative_path)
+            if filename.endswith((".jpg", ".jpeg", ".png")):
 
                 # Open the image file
                 image_path = os.path.join(foldername, filename)
@@ -26,7 +23,7 @@ def resize_image(folder_path, new_width):
                 resized_image.save(image_path)
                 
                 # Confirm resize
-                print(f"{image_path} resized to 600x{str(new_height)}")
+                print(f"{image_path} resized to {str(new_width)}x{str(new_height)}")
 
 def main():
     # Get the desired width of the resized images from user input
