@@ -1,6 +1,5 @@
 import os
 import cv2
-import numpy as np
 
 # Get the list of image files in the folder
 input_folder_path = "input/"
